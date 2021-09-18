@@ -6,13 +6,16 @@ name: Build and deploy Node.js app to Azure Web App - msa-jingyuan
 on:
   push:
     branches:
+      - main
       - feature/git-action
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: windows-latest
-
+    default:
+      run:
+        working-directory: "./frontend"
     steps:
       - uses: actions/checkout@v2
 
@@ -53,4 +56,4 @@ jobs:
           app-name: 'msa-jingyuan'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AD0C0C04926045E58B08012F12CA06D3 }}
-          package: .
+          package: "./frontend/my-app/build"
