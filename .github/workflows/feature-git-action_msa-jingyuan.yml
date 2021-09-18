@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - main
-      - feature/git-action
+      - feature/*
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        working-directory: "./frontend"
+        working-directory: "./frontend/my-app"
     steps:
       - uses: actions/checkout@v2
 
